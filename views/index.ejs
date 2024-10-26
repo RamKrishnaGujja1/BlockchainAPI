@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Data</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Market Data</h1>
+        <form action="/market-data" method="GET">
+            <button type="submit">Fetch Market Data</button>
+        </form>
+        
+        <% if (error) { %>
+            <p class="error"><%= error %></p>
+        <% } else if (data) { %>
+            <h2>Market Information for <%= data.symbol %></h2>
+            <p>Last Trade Price: <%= data.last_trade_price %></p>
+            <p>24h Price Change: <%= data.price_24h %></p>
+            <p>24h Volume: <%= data.volume_24h %></p>
+        <% } else { %>
+            <p>No data available. Please fetch market data.</p>
+        <% } %>
+    </div>
+</body>
+</html>
